@@ -1,4 +1,4 @@
-package com.ravemaster.ravestudy.ui.theme
+package com.ravemaster.ravestudy.presentation.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -240,23 +240,18 @@ private val highContrastDarkColorScheme = darkColorScheme(
 
 @Composable
 fun JetpackBaseProjectTheme(
-    themeMode: String = "light",
+    darkTheme: Boolean = isSystemInDarkTheme(),
     dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {
     val context = LocalContext.current
     val colorScheme = when {
         dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-            if (themeMode.contains("dark",ignoreCase = true)) dynamicDarkColorScheme(context)
+            if (darkTheme)dynamicDarkColorScheme(context)
             else dynamicLightColorScheme(context)
         }
 
-        themeMode == "light" -> lightScheme
-        themeMode == "dark" -> darkScheme
-        themeMode == "mediumContrastLight" -> mediumContrastLightColorScheme
-        themeMode == "highContrastLight" -> highContrastLightColorScheme
-        themeMode == "mediumContrastDark" -> mediumContrastDarkColorScheme
-        themeMode == "highContrastDark" -> highContrastDarkColorScheme
+        darkTheme -> darkScheme
         else -> lightScheme
     }
 

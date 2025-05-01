@@ -1,4 +1,4 @@
-package com.ravemaster.ravestudy.ui.theme
+package com.ravemaster.ravestudy.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 
