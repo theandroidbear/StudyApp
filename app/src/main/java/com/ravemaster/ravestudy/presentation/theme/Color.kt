@@ -217,3 +217,14 @@ val surfaceContainerLowDarkHighContrast = Color(0xFF1D211B)
 val surfaceContainerDarkHighContrast = Color(0xFF2E322B)
 val surfaceContainerHighDarkHighContrast = Color(0xFF393D36)
 val surfaceContainerHighestDarkHighContrast = Color(0xFF444841)
+
+val red = Color.Red
+val blue = Color.Blue
+val green = Color.Green
+val yellow = Color.Yellow
+
+val redGradient = listOf(Color.Red, Color(0xFFFF6666))
+val blueGradient = listOf(Color.Blue, Color(0xFF6666FF))
+val greenGradient = listOf(Color.Green, Color(0xFF66FF66))
+val yellowGradient = listOf(Color.Yellow, Color(0xFFFFFFED))
+val purpleGradient = listOf(Color(0xFF800080), Color(0xFFCC99FF))
