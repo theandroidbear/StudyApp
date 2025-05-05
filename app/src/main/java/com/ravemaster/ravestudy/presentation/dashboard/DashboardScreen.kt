@@ -17,6 +17,7 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -36,14 +37,17 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.ravemaster.ravestudy.R
 import com.ravemaster.ravestudy.domain.models.Subject
+import com.ravemaster.ravestudy.domain.models.Task
 import com.ravemaster.ravestudy.presentation.dashboard.components.CountCard
 import com.ravemaster.ravestudy.presentation.dashboard.components.DashboardScreenTopBar
 import com.ravemaster.ravestudy.presentation.dashboard.components.SubjectCard
+import com.ravemaster.ravestudy.presentation.dashboard.components.taskList
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DashboardScreen(modifier: Modifier = Modifier) {
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(rememberTopAppBarState())
+    val context = LocalContext.current
     val subjects = listOf(
         Subject(
             name = "English",
@@ -69,6 +73,32 @@ fun DashboardScreen(modifier: Modifier = Modifier) {
             name = "Music",
             goalHours = 6.0f,
             colors = Subject.subjectCardColors[4]
+        )
+    )
+    val taskList = listOf(
+        Task(
+            name = "Prepare notes",
+            description = "Preparation of notes for studying",
+            dueDate = 0L,
+            priority = 1,
+            relatedToSubject = "",
+            isComplete = false
+        ),
+        Task(
+            name = "Prepare notes",
+            description = "Preparation of notes for studying",
+            dueDate = 0L,
+            priority = 1,
+            relatedToSubject = "",
+            isComplete = true
+        ),
+        Task(
+            name = "Prepare notes",
+            description = "Preparation of notes for studying",
+            dueDate = 0L,
+            priority = 1,
+            relatedToSubject = "",
+            isComplete = false
         )
     )
     Scaffold (
@@ -98,6 +128,24 @@ fun DashboardScreen(modifier: Modifier = Modifier) {
                     subjectList = subjects
                 )
             }
+            item{
+                Button(
+                    onClick = {
+                        Toast.makeText(context,"Start study session",Toast.LENGTH_LONG).show()
+                    },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 20.dp, vertical = 20.dp)
+                ) {
+                    Text(
+                        "Start study session"
+                    )
+                }
+            }
+            taskList(
+                "Upcoming tasks",
+                taskList = taskList
+            )
         }
 
     }
